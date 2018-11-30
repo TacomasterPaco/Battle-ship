@@ -102,3 +102,4 @@ void computerturn(int&x,int&y){
 }
 676676
     aber al cine
+    aber al cine
