@@ -100,6 +100,4 @@ void computerturn(int&x,int&y){
         cout<<"\n";
     return;
 }
-676676
-    aber al cine
-    aber al cine
+
