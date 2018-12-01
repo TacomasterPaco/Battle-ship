@@ -110,6 +110,14 @@ void imprimirPantalla()
     {
         cout<<endl<<i+1;
         for(int j=0;j<NUMCOLAS;j++)
+            cout<<setw(4)<<matrizJugador2[i][j];
+    }
+    cout<<"\n------------------------------------\n";
+    cout<<setw(5)<<"1"<<setw(4)<<"2"<<setw(4)<<"3"<<setw(4)<<"4"<<setw(4)<<"5"<<setw(4)<<"6";
+    for(int i=0;i<NUMFILAS;i++)
+    {
+        cout<<endl<<i+1;
+        for(int j=0;j<NUMCOLAS;j++)
             cout<<setw(4)<<matrizJugador[i][j];
     }
 }
@@ -335,7 +343,9 @@ void darcoordenadas1(bool &orientacion, int &x, int &y)
 
 void Singleplayer(void)
 {
-    cout<<"Se seleccionó el modo multiplayer"<<endl;
+    cout<<"Se seleccionó el modo singleplayer"<<endl;
+    imprimirPantalla();
+    ponerBarcos();
     const int martizss=6;
     int first_to_go=1 ,turns = 0, boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0,
     matrizplyer2[martizss][martizss]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
