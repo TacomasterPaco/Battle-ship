@@ -42,6 +42,7 @@ void posicionarBarco1(int &k);
 void posicionarBarco2(int &k);
 void posicionarBarco3(int &k);
 void posicionarBarco4(int &k);
+void ponerBarcos();
 
 int main()
 {
@@ -79,31 +80,6 @@ int main()
     }
   
   imprimirPantalla();
-
-    for (k = 1; k <= 4; k++)
-    {
-        switch (k)
-        {
-        case 1:
-            posicionarBarco1(k);
-            imprimirPantalla();
-            break;
-        case 2:
-            posicionarBarco2(k);
-            imprimirPantalla();
-            break;
-        case 3:
-            posicionarBarco3(k);
-            imprimirPantalla();
-            break;
-        case 4:
-            posicionarBarco4(k);
-            imprimirPantalla();
-            break;
-        }
-    }
-  
-  
   
   
   
@@ -141,32 +117,28 @@ void imprimirPantalla()
 void posicionarBarco1(int &k)
 {
     cout<<"\n\nPosiciona el barco #1 (3 espacios)\n";
-    cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
-    cin>>orientacion;
-    cout<<"dame x1\n";
-    cin>>x;
-    cout<<"dame y1\n";
-    cin>>y;
+    darcoordenadas1(orientacion,x,y);
     if (orientacion)
     {
         do
         {
             cout<<"dame x2\n";
             cin>>x1;
+            x1--;
         }
         while(!(x-x1==2 || x-x1==-2));
         if(x-x1==-2)
         {
             for(int i=0; i<3;i++)
             {
-                matrizJugador[y-1][x+i-1]=posBarco1[i];
+                matrizJugador[y][x+i]=posBarco1[i];
             }
         }
         else
         {
             for(int i=0; i<3;i++)
             {
-                matrizJugador[y-1][x-i-1]=posBarco1[i];
+                matrizJugador[y][x-i]=posBarco1[i];
             }
         }
     }
@@ -176,20 +148,21 @@ void posicionarBarco1(int &k)
         {
             cout<<"dame y2\n";
             cin>>y1;
+            y1--;
         }
         while(!(y-y1==2 || y-y1==-2));
         if(y-y1==-2)
         {
             for(int i=0; i<3;i++)
             {
-                matrizJugador[y+i-1][x-1]=posBarco1[i];
+                matrizJugador[y+i][x]=posBarco1[i];
             }
         }
         else
         {
             for(int i=0; i<3;i++)
             {
-                matrizJugador[y-i-1][x-1]=posBarco1[i];
+                matrizJugador[y-i][x]=posBarco1[i];
             }
         }
     }
@@ -199,36 +172,32 @@ void posicionarBarco1(int &k)
 void posicionarBarco2(int &k)
 {
     cout<<"\n\nPosiciona el barco #2 (2 espacios)\n";
-    cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
-    cin>>orientacion;
-    cout<<"dame x1\n";
-    cin>>x;
-    cout<<"dame y1\n";
-    cin>>y;
+    darcoordenadas1(orientacion,x,y);
     if (orientacion)
     {
         do
         {
             cout<<"dame x2\n";
             cin>>x1;
+            x1--;
         }
         while(!(x-x1==1 || x-x1==-1));
         if(x-x1==-1)
         {
-                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-1][x+1-1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x+1]==0)
                 {
-                    matrizJugador[y-1][x-1]=posBarco2[0];
-                    matrizJugador[y-1][x+1-1]=posBarco2[1];
+                    matrizJugador[y][x]=posBarco2[0];
+                    matrizJugador[y][x+1]=posBarco2[1];
                 }
                 else
                     k--;
         }
         else
         {
-                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-1][x-2]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y][x-1]==0)
                 {
-                    matrizJugador[y-1][x-1]=posBarco2[0];
-                    matrizJugador[y-1][x-2]=posBarco2[1];
+                    matrizJugador[y][x]=posBarco2[0];
+                    matrizJugador[y][x-1]=posBarco2[1];
                 }
                 else
                     k--;
@@ -240,24 +209,25 @@ void posicionarBarco2(int &k)
         {
             cout<<"dame y2\n";
             cin>>y1;
+            y1--;
         }
         while(!(y-y1==1 || y-y1==-1));
         if (y-y1==-1)
         {
-                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y+1-1][x-1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y+1][x]==0)
                 {
-                    matrizJugador[y-1][x-1]=posBarco2[0];
-                    matrizJugador[y+1-1][x-1]=posBarco2[1];
+                    matrizJugador[y][x]=posBarco2[0];
+                    matrizJugador[y+1][x]=posBarco2[1];
                 }
                 else
                     k--;
         }
         else
         {
-                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-2][x-1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x]==0)
                 {
-                    matrizJugador[y-1][x-1]=posBarco2[0];
-                    matrizJugador[y-2][x-1]=posBarco2[1];
+                    matrizJugador[y][x]=posBarco2[0];
+                    matrizJugador[y-1][x]=posBarco2[1];
                 }
                 else
                     k--;
@@ -269,36 +239,32 @@ void posicionarBarco2(int &k)
 void posicionarBarco3(int &k)
 {
     cout<<"\n\nPosiciona el barco #3 (2 espacios)\n";
-    cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
-    cin>>orientacion;
-    cout<<"dame x1\n";
-    cin>>x;
-    cout<<"dame y1\n";
-    cin>>y;
+    darcoordenadas1(orientacion,x,y);
     if (orientacion)
     {
         do
         {
             cout<<"dame x2\n";
             cin>>x1;
+            x1--;
         }
         while(!(x-x1==1 || x-x1==-1));
         if (x-x1==-1)
         {
-                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-1][x+1-1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y][x+1]==0)
                 {
-                    matrizJugador[y-1][x-1]=posBarco3[0];
-                    matrizJugador[y-1][x+1-1]=posBarco3[1];
+                    matrizJugador[y][x]=posBarco3[0];
+                    matrizJugador[y][x+1]=posBarco3[1];
                 }
                 else
                     k--;
         }
         else
         {
-                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-1][x-2]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y][x-1]==0)
                 {
-                    matrizJugador[y-1][x-1]=posBarco3[0];
-                    matrizJugador[y-1][x-2]=posBarco3[1];
+                    matrizJugador[y][x]=posBarco3[0];
+                    matrizJugador[y][x-1]=posBarco3[1];
                 }
                 else
                     k--;
@@ -310,24 +276,25 @@ void posicionarBarco3(int &k)
         {
             cout<<"dame y2\n";
             cin>>y1;
+            y1--;
         }
         while(!(y-y1==1 || y-y1==-1));
         if(y-y1==-1)
         {
-                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y+1-1][x-1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y+1][x]==0)
                 {
-                    matrizJugador[y-1][x-1]=posBarco3[0];
-                    matrizJugador[y+1-1][x-1]=posBarco3[1];
+                    matrizJugador[y][x]=posBarco3[0];
+                    matrizJugador[y+1][x]=posBarco3[1];
                 }
                 else
                     k--;
         }
         else
         {
-                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-2][x-1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x]==0)
                 {
-                    matrizJugador[y-1][x-1]=posBarco3[0];
-                    matrizJugador[y-2][x-1]=posBarco3[1];
+                    matrizJugador[y][x]=posBarco3[0];
+                    matrizJugador[y-1][x]=posBarco3[1];
                 }
                 else
                     k--;
@@ -340,20 +307,35 @@ void posicionarBarco3(int &k)
 void posicionarBarco4(int &k)
 {
     cout<<"\n\nPosiciona el barco #4 (1 espacio)\n";
-    cout<<"dame x1\n";
-    cin>>x;
-    cout<<"dame y1\n";
-    cin>>y;
-    if (matrizJugador[y-1][x-1]==0)
-        matrizJugador[y-1][x-1]=posBarco4[0];
+    darcoordenadas1(orientacion,x,y);
+    if (matrizJugador[y][x]==0)
+        matrizJugador[y][x]=posBarco4[0];
     else
         k--;
     system("cls");
 }
 
+void darcoordenadas1(bool &orientacion, int &x, int &y)
+{
+    cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
+    cin>>orientacion;
+    do{
+    cout<<"dame x1\n";
+    cin>>x;
+    cout<<"dame y1\n";
+    cin>>y;
+    if (!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)))
+        cout<<"Coordenada fuera de rango\n";
+    }
+    while(!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)));
+    x--;
+    y--;
+}
+
 void Singleplayer(void)
 {
     cout<<"Se seleccionó el modo un jugador"<<endl;
+    void ponerBarcos();
 }
 void Multiplayer(void)
 {
@@ -474,4 +456,30 @@ void playerturn(int&x,int&y){
     else
         cout<<"\n";
     return;
+}
+
+void ponerBarcos()
+{
+  for (k = 1; k <= 4; k++)
+    {
+        switch (k)
+        {
+        case 1:
+            posicionarBarco1(k);
+            imprimirPantalla();
+            break;
+        case 2:
+            posicionarBarco2(k);
+            imprimirPantalla();
+            break;
+        case 3:
+            posicionarBarco3(k);
+            imprimirPantalla();
+            break;
+        case 4:
+            posicionarBarco4(k);
+            imprimirPantalla();
+            break;
+        }
+    }
 }
