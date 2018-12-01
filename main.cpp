@@ -346,7 +346,7 @@ void darcoordenadas1(int &orientacion, int &x, int &y)
 void Singleplayer(void)
 {
     cout<<"Se seleccionó el modo singleplayer"<<endl;
-    imprimirpantalla();
+    imprimirPantalla();
     ponerBarcos();
     int first_to_go=0, boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0,
     srand(time(0));
