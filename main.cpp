@@ -5,8 +5,6 @@
 #include <windows.h>////Es una libreria  que contiene las declaraciones de todas las funcionees
                     //de  la biblioteca Windows API.
 #include <string> //Nos sirve para manipular arreglos y strings
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
 
 using namespace std;
 
@@ -15,35 +13,10 @@ void desplegarMenu(); //Esta función nos permite desplegar el menú.
 void Singleplayer(); //Cuando se presiona 1 en el menú, nos lleva a la función SinglePlayer
 void Multiplayer(); //Cuando presionamos 2 en el menú, nos lleva a la función MultiPlayer
 void color(int X); //Ésta función hace referencia a un comando que nos permite cambiar el color de las letras dependiendo de donde se selccione
-void playerturn (int&,int&); //Ésta función hace referencia a cuando le toca jugar a la persona,
+void playerturn (int& x,int& y); //Ésta función hace referencia a cuando le toca jugar a la persona,
                                     //En caso de que sea Multiplayer la función se llamará 2 veces
                                     // y si es singleplayer solo una vez.
-void computerturn(int&,int&,int&,int,int);//Ésta función se llama cuando se selecciona singleplayer.
-
-const int NUMFILAS=6;
-const int NUMCOLAS=6;
-int matrizJugador[NUMFILAS][NUMCOLAS]={0};
-int matrizEnemigo[NUMFILAS][NUMCOLAS]={0};
-int matrizOculta[NUMFILAS][NUMCOLAS]={0};//0=water,1=miss,2=boat,3=hit
-
-int posBarco1[3]={1,1,1};
-int posBarco2[2]={1,1};
-int posBarco3[2]={1,1};
-int posBarco4[1]={1};
-int posEnemigo1[3]={1,1,1};
-int posEnemigo2[2]={1,1};
-int posEnemigo3[2]={1,1};
-int posEnemigo4[1]={1};
-int k=0, x=1, y=1, y1=0, x1=0;
-bool orientacion= 0;
-
-void imprimirPantalla();
-void posicionarBarco1(int &k);
-void posicionarBarco2(int &k);
-void posicionarBarco3(int &k);
-void posicionarBarco4(int &k);
-void ponerBarcos();
-void darcoordenadas1(bool &orientacion, int &x, int &y);
+void computerturn(int&x,int&y);//Ésta función se llama cuando se selecciona singleplayer.
 
 int main()
 {
@@ -79,15 +52,9 @@ int main()
             cout<<endl<<"\tINGRESE UNA OPCION CORRECTA"<<endl;
         }
     }
-  
-  imprimirPantalla();
-  
-  
-  
-return 0;//AQUI ACABA MAIN----------------------------------------------------------------------------------------------------
+return 0;
 }
-
-void desplegarMenu(void)
+void desplegarMenu(void)                                            //Ésta es la función "Desplegar Menú, no recibe valores pues son puros cout´s
 {
     color(48); //Esta línea nos permite cambiar el color de rápida
     cout<<("\n");
@@ -103,345 +70,73 @@ void desplegarMenu(void)
     color(8);  //Otro color que cambiamos
     cout<<("\n\n\t1- Un Jugador\n\n\t2- Multijugador\n\n\t3- Salir\n\n\tIntroduce una opción:");
 }
-
-void imprimirPantalla()
-{
-    cout<<setw(5)<<"1"<<setw(4)<<"2"<<setw(4)<<"3"<<setw(4)<<"4"<<setw(4)<<"5"<<setw(4)<<"6";
-    for(int i=0;i<NUMFILAS;i++)
-    {
-        cout<<endl<<i+1;
-        for(int j=0;j<NUMCOLAS;j++)
-            cout<<setw(4)<<matrizJugador[i][j];
-    }
-}
-
-void posicionarBarco1(int &k)
-{
-    cout<<"\n\nPosiciona el barco #1 (3 espacios)\n";
-    darcoordenadas1(orientacion,x,y);
-    if (orientacion)
-    {
-        do
-        {
-            cout<<"dame x2\n";
-            cin>>x1;
-            x1--;
-        }
-        while(!(x-x1==2 || x-x1==-2));
-        if(x-x1==-2)
-        {
-            for(int i=0; i<3;i++)
-            {
-                matrizJugador[y][x+i]=posBarco1[i];
-            }
-        }
-        else
-        {
-            for(int i=0; i<3;i++)
-            {
-                matrizJugador[y][x-i]=posBarco1[i];
-            }
-        }
-    }
-    else
-    {
-        do
-        {
-            cout<<"dame y2\n";
-            cin>>y1;
-            y1--;
-        }
-        while(!(y-y1==2 || y-y1==-2));
-        if(y-y1==-2)
-        {
-            for(int i=0; i<3;i++)
-            {
-                matrizJugador[y+i][x]=posBarco1[i];
-            }
-        }
-        else
-        {
-            for(int i=0; i<3;i++)
-            {
-                matrizJugador[y-i][x]=posBarco1[i];
-            }
-        }
-    }
-    system("cls");
-}
-
-void posicionarBarco2(int &k)
-{
-    cout<<"\n\nPosiciona el barco #2 (2 espacios)\n";
-    darcoordenadas1(orientacion,x,y);
-    if (orientacion)
-    {
-        do
-        {
-            cout<<"dame x2\n";
-            cin>>x1;
-            x1--;
-        }
-        while(!(x-x1==1 || x-x1==-1));
-        if(x-x1==-1)
-        {
-                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x+1]==0)
-                {
-                    matrizJugador[y][x]=posBarco2[0];
-                    matrizJugador[y][x+1]=posBarco2[1];
-                }
-                else
-                    k--;
-        }
-        else
-        {
-                if (matrizJugador[y][x]==0 && matrizJugador[y][x-1]==0)
-                {
-                    matrizJugador[y][x]=posBarco2[0];
-                    matrizJugador[y][x-1]=posBarco2[1];
-                }
-                else
-                    k--;
-        }
-    }
-    else
-    {
-        do
-        {
-            cout<<"dame y2\n";
-            cin>>y1;
-            y1--;
-        }
-        while(!(y-y1==1 || y-y1==-1));
-        if (y-y1==-1)
-        {
-                if (matrizJugador[y][x]==0 && matrizJugador[y+1][x]==0)
-                {
-                    matrizJugador[y][x]=posBarco2[0];
-                    matrizJugador[y+1][x]=posBarco2[1];
-                }
-                else
-                    k--;
-        }
-        else
-        {
-                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x]==0)
-                {
-                    matrizJugador[y][x]=posBarco2[0];
-                    matrizJugador[y-1][x]=posBarco2[1];
-                }
-                else
-                    k--;
-        }
-    }
-    system("cls");
-}
-
-void posicionarBarco3(int &k)
-{
-    cout<<"\n\nPosiciona el barco #3 (2 espacios)\n";
-    darcoordenadas1(orientacion,x,y);
-    if (orientacion)
-    {
-        do
-        {
-            cout<<"dame x2\n";
-            cin>>x1;
-            x1--;
-        }
-        while(!(x-x1==1 || x-x1==-1));
-        if (x-x1==-1)
-        {
-                if (matrizJugador[y][x]==0 && matrizJugador[y][x+1]==0)
-                {
-                    matrizJugador[y][x]=posBarco3[0];
-                    matrizJugador[y][x+1]=posBarco3[1];
-                }
-                else
-                    k--;
-        }
-        else
-        {
-                if (matrizJugador[y][x]==0 && matrizJugador[y][x-1]==0)
-                {
-                    matrizJugador[y][x]=posBarco3[0];
-                    matrizJugador[y][x-1]=posBarco3[1];
-                }
-                else
-                    k--;
-        }
-    }
-    else
-    {
-        do
-        {
-            cout<<"dame y2\n";
-            cin>>y1;
-            y1--;
-        }
-        while(!(y-y1==1 || y-y1==-1));
-        if(y-y1==-1)
-        {
-                if (matrizJugador[y][x]==0 && matrizJugador[y+1][x]==0)
-                {
-                    matrizJugador[y][x]=posBarco3[0];
-                    matrizJugador[y+1][x]=posBarco3[1];
-                }
-                else
-                    k--;
-        }
-        else
-        {
-                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x]==0)
-                {
-                    matrizJugador[y][x]=posBarco3[0];
-                    matrizJugador[y-1][x]=posBarco3[1];
-                }
-                else
-                    k--;
-        }
-
-    }
-    system("cls");
-}
-
-void posicionarBarco4(int &k)
-{
-    cout<<"\n\nPosiciona el barco #4 (1 espacio)\n";
-    darcoordenadas1(orientacion,x,y);
-    if (matrizJugador[y][x]==0)
-        matrizJugador[y][x]=posBarco4[0];
-    else
-        k--;
-    system("cls");
-}
-
-void darcoordenadas1(bool &orientacion, int &x, int &y)
-{
-    cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
-    cin>>orientacion;
-    do{
-    cout<<"dame x1\n";
-    cin>>x;
-    cout<<"dame y1\n";
-    cin>>y;
-    if (!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)))
-        cout<<"Coordenada fuera de rango\n";
-    }
-    while(!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)));
-    x--;
-    y--;
-}
-
 void Singleplayer(void)
 {
-    cout<<"Se seleccionó el modo singleplayer"<<endl;
-    const int martizss=6;
-    int first_to_go=1 ,turns = 0, boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0,
-    matrizplyer2[martizss][martizss]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    matrizplyer1[martizss][martizss]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};//0=water,1=miss,2=boat,3=hit
-    /*srand(time(0));
-    first_to_go=rand() % 2+1;*/
-    for(turns;turns<72;turns++){//limit 72 due to number of possilbe turnsorhits
-        if(first_to_go==1){
-            playerturn(x,y);//func to set coord og shoot
-            if((matrizplyer2[x][y]%2)==0){//if water or boat increase value by one to chage to miss ot hit
-                matrizplyer2[x][y]++;
-                if(matrizplyer2[x][y]==3){
-                    cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
-                    boats_sunk1--;
-                    turns--;
-                    continue;
-                }
-                else{
-                    cout<<"\nmixx\nnext2\n";
-                    first_to_go++;
-                }
-            }
-            else if((matrizplyer2[x][y]%2)==1){
-                cout<<"\nalredy fired there\n";
-                turns--;
-                continue;
-            }
-        }
-        else if(first_to_go==2){
-            computerturn(x,y,lasthitcompturn,lasthitcomx, lasthitcomy);
-            if((matrizplyer1[x][y]%2)==0){
-                matrizplyer1[x][y]++;
-                if(matrizplyer1[x][y]==3){
-                    cout<<"\nhit\n";
-                    boats_sunk2--;
-                    turns--;
-                    continue;
-                }
-                else{
-                    cout<<"\nmiss\nnext1\n";
-                    first_to_go--;
-                }
-            }
-            else if((matrizplyer1[x][y]%2)==1){
-                turns--;
-                continue;
-            }
-        }
-    }
+    cout<<"Se seleccionó el modo un jugador"<<endl;
 }
 void Multiplayer(void)
 {
     cout<<"Se seleccionó el modo multiplayer"<<endl;
-    int first_to_go=0, boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0,
+    {
+    const int martizss=6;
+    int first_to_go=0 ,turns = 0, boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,
+    matrizplyer2[martizss][martizss]={0};
+    matrizplyer1[martizss][martizss]={0};//0=water,1=miss,2=boat,3=hit
     srand(time(0));
     first_to_go=rand() % 2+1;
-    for(int i =0;i<72;i++){//limit 72 due to number of possilbe turnsorhits
-      if(boats_sunk1==0||boats_sunk2==0)
-        i=72;
+    for(turns;turns<72;turns++){//Aquí se limita  a 72 el número de tiros. Pues las matrices son de 6x6=32 y como son dos matrices=72
         if(first_to_go==1){
-            playerturn(x,y);//func to set coord og shoot
-            if((matrizEnemigo[x][y]%2)==0){//if water or boat increase value by one to chage to miss ot hit
-                matrizEnemigo[x][y]++;
-                if(matrizEnemigo[x][y]==3){
-                    cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
-                    boats_sunk1--;
-                    continue;
+            playerturn(x,y);//Llama a la funciòn playerturn
+            if((matrizplyer2[x][y]%2)==0){//Si el valor del agua o del bote incrementa en uno, se cambiara a miss o hit
+                matrizplyer2[x][y]++;
+                if(matrizplyer2[x][y]==3){
+                    cout<<"\nAcertaste\n";
+                    boats_sunk1--;//A la variable boats_sunkl se le resta 1
+                    turns--;//A la variable turns se le resta 1
+                    continue;//Se regresa al inicio del For
                 }
                 else{
-                    cout<<"\nmixx\nnext2\n";
-                    first_to_go++;
+                    cout<<"\nFallaste\nJugador 2\n";
+                    first_to_go++;//A la variable first_to_go se le resta 1
                 }
             }
-            else if((matrizEnemigo[x][y]%2)==1){
-                cout<<"\nalredy fired there\n";
+            else if((matrizplyer2[x][y]%2)==1){ //Si al disparar en un espacio, este se encuentra en fallo, se escribirá un mensaje diciendo que
+                cout<<"\nYa disparaste ahí\n";  //ya había disparado ahí previamente
+                turns--;
                 continue;
             }
         }
         else if(first_to_go==2){
             playerturn(x,y);
-            if((matrizJugador[x][y]%2)==0){
-                matrizJugador[x][y]++;
-                if(matrizJugador[x][y]==3){
-                    cout<<"\nhit\n";
+            if((matrizplyer1[x][y]%2)==0){
+                matrizplyer1[x][y]++;
+                if(matrizplyer1[x][y]==3){
+                    cout<<"\nAcertaste\n";
                     boats_sunk2--;
+                    turns--;
                     continue;
                 }
                 else{
-                    cout<<"\nmiss\nnext1\n";
+                    cout<<"\nFallaste\nJugador 1\n";
                     first_to_go--;
                 }
             }
-            else if((matrizJugador[x][y]%2)==1){
-                cout<<"\naleady fired there\n";
+            else if((matrizplyer1[x][y]%2)==1){
+                cout<<"\nYa disparaste ahi\n";
+                turns--;
                 continue;
             }
         }
     }
 }
-
-void color(int X)
+}
+void color(int X)    //Ésta es la función que nos permite cambiar el color del menú
 {
 SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),X);
 }
 void computerturn(int&x,int&y,int&lasthitcompturn,int lasthitcomx, int lasthitcomy)
 {
+    cout<<"si";
     srand(time(0));
     x=rand() % 5+0;
     srand(time(0));
@@ -481,19 +176,21 @@ void computerturn(int&x,int&y,int&lasthitcompturn,int lasthitcomx, int lasthitco
         cout<<"\n";
     return;
 }
-void playerturn(int&x,int&y){
-    cout<<"x:";
+void playerturn(int&x,int&y){           //Ésta función se llama cuando es el turno del jugador
+    cout<<" Ingrese la coordenada en x:";
     cin>>x;
-    cout<<"y:";
-    cin>>y;
-    x--;
-    y--;
-    if(x>5||x<-1){
-        cout<<"poner cordenada correcta\n";
+    cout<<"Ingrese la coordenana en y:";
+    cin>>y;                                 //La parte de arriba nos pide que se ingresen las coordenadas, y se almacenan en la variable "x" y "y"
+    x--;                                    //Como la matriz del programa inicia 0 en vez de 1,es diferente a la que ve el usuario
+    y--;                                    //Es decir, se le resta uno para que concuerde la coordenada que el usuario ingreso con la
+                                            //con la que el usuario ve
+    if(x>5||x<-1){                                          //Ésta parte del programa es la que no permite al usuario introducir
+
+        cout<<"Ingresar una cordenada correcta\n";          //otro valor diferente al que está permitido por las matrices y en las coordenada "x" y "y"
         playerturn(x,y);
     }
     else if(y>5||y<-1){
-        cout<<"poner cordenada correcta\n";
+        cout<<"Ingrese una cordenada correcta\n";
         playerturn(x,y);
     }
     else
@@ -501,28 +198,5 @@ void playerturn(int&x,int&y){
     return;
 }
 
-void ponerBarcos()
-{
-  for (k = 1; k <= 4; k++)
-    {
-        switch (k)
-        {
-        case 1:
-            posicionarBarco1(k);
-            imprimirPantalla();
-            break;
-        case 2:
-            posicionarBarco2(k);
-            imprimirPantalla();
-            break;
-        case 3:
-            posicionarBarco3(k);
-            imprimirPantalla();
-            break;
-        case 4:
-            posicionarBarco4(k);
-            imprimirPantalla();
-            break;
-        }
-    }
-}
+
+
