@@ -26,14 +26,14 @@ int matrizJugador[NUMFILAS][NUMCOLAS]={0};
 int matrizEnemigo[NUMFILAS][NUMCOLAS]={0};
 int matrizOculta[NUMFILAS][NUMCOLAS]={0};
 
-int posBarco1[3]={1,1,1};
-int posBarco2[2]={1,1};
-int posBarco3[2]={1,1};
-int posBarco4[1]={1};
-int posEnemigo1[3]={1,1,1};
-int posEnemigo2[2]={1,1};
-int posEnemigo3[2]={1,1};
-int posEnemigo4[1]={1};
+int posBarco1[3]={2,2,2};
+int posBarco2[2]={2,2};
+int posBarco3[2]={2,2};
+int posBarco4[1]={2};
+int posEnemigo1[3]={2,2,2};
+int posEnemigo2[2]={2,2};
+int posEnemigo3[2]={2,2};
+int posEnemigo4[1]={2};
 int k=0, x=1, y=1, y1=0, x1=0;
 bool orientacion= 0;
 
