@@ -99,8 +99,8 @@ void desplegarMenu(void)
     cout<<("\n\t\t |\n\t\t |");
     color(14);  //Aqui cambiamos de color otra vez
     cout<<("\n\t$$$$$$$$$$$$$$$$$$$$$$$$$\n\t -----------------------");            //Al igual que lo anterior, esto forma parte de la imagen de inicio
-    cout<<("\n\t  $$$$/)$$$$$$$$$$$$$$$\n\t~~$$$(/$$$$$$$$$$$$$$~\n\t~$$$$$$$$$$$$$$$$$~~");
-    cout<<("\n\t~~~~~~~~~\n\t~~~~~~~~~");
+    cout<<("\n\t  $$$$/)$$$$$$$$$$$$$$$\n\t~~~$$$(/$$$$$$$$$$$$$$~~~\n\t~~~~$$$$$$$$$$$$$$$$$~~~~");
+    cout<<("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~\n\t~~~~~~~~~~~~~~~~~~~~~~~~~");
     color(8);  //Otro color que cambiamos
     cout<<("\n\n\t1- Un Jugador\n\n\t2- Multijugador\n\n\t3- Salir\n\n\tIntroduce una opción:");
 }
