@@ -43,6 +43,7 @@ void posicionarBarco2(int &k);
 void posicionarBarco3(int &k);
 void posicionarBarco4(int &k);
 void ponerBarcos();
+void darcoordenadas1(bool &orientacion, int &x, int &y);
 
 int main()
 {
