@@ -19,6 +19,30 @@ void playerturn (int&,int&); //Ésta función hace referencia a cuando le toca j
                                     //En caso de que sea Multiplayer la función se llamará 2 veces
                                     // y si es singleplayer solo una vez.
 void computerturn(int&,int&,int&,int,int);//Ésta función se llama cuando se selecciona singleplayer.
+
+const int NUMFILAS=6;
+const int NUMCOLAS=6;
+int matrizJugador[NUMFILAS][NUMCOLAS]={0};
+int matrizEnemigo[NUMFILAS][NUMCOLAS]={0};
+int matrizOculta[NUMFILAS][NUMCOLAS]={0};
+
+int posBarco1[3]={1,1,1};
+int posBarco2[2]={1,1};
+int posBarco3[2]={1,1};
+int posBarco4[1]={1};
+int posEnemigo1[3]={1,1,1};
+int posEnemigo2[2]={1,1};
+int posEnemigo3[2]={1,1};
+int posEnemigo4[1]={1};
+int k=0, x=0, y=0, y1=0, x1=0;
+bool orientacion= 0;
+
+void imprimirPantalla();
+void posicionarBarco1(int &k);
+void posicionarBarco2(int &k);
+void posicionarBarco3(int &k);
+void posicionarBarco4(int &k);
+
 int main()
 {
    int op=0; //Aquí se inicializa Op, que es la operación que seleccionará el usuario en el menú
@@ -53,8 +77,39 @@ int main()
             cout<<endl<<"\tINGRESE UNA OPCION CORRECTA"<<endl;
         }
     }
-return 0;
+  
+  imprimirPantalla();
+
+    for (k = 1; k <= 4; k++)
+    {
+        switch (k)
+        {
+        case 1:
+            posicionarBarco1(k);
+            imprimirPantalla();
+            break;
+        case 2:
+            posicionarBarco2(k);
+            imprimirPantalla();
+            break;
+        case 3:
+            posicionarBarco3(k);
+            imprimirPantalla();
+            break;
+        case 4:
+            posicionarBarco4(k);
+            imprimirPantalla();
+            break;
+        }
+    }
+  
+  
+  
+  
+  
+return 0;//AQUI ACABA MAIN----------------------------------------------------------------------------------------------------
 }
+
 void desplegarMenu(void)
 {
     color(48); //Esta línea nos permite cambiar el color de rápida
@@ -71,6 +126,231 @@ void desplegarMenu(void)
     color(8);  //Otro color que cambiamos
     cout<<("\n\n\t1- Un Jugador\n\n\t2- Multijugador\n\n\t3- Salir\n\n\tIntroduce una opción:");
 }
+
+void imprimirPantalla()
+{
+    cout<<setw(5)<<"1"<<setw(4)<<"2"<<setw(4)<<"3"<<setw(4)<<"4"<<setw(4)<<"5"<<setw(4)<<"6";
+    for(int i=0;i<NUMFILAS;i++)
+    {
+        cout<<endl<<i+1;
+        for(int j=0;j<NUMCOLAS;j++)
+            cout<<setw(4)<<matrizJugador[i][j];
+    }
+}
+
+void posicionarBarco1(int &k)
+{
+    cout<<"\n\nPosiciona el barco #1 (3 espacios)\n";
+    cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
+    cin>>orientacion;
+    cout<<"dame x1\n";
+    cin>>x;
+    cout<<"dame y1\n";
+    cin>>y;
+    if (orientacion)
+    {
+        do
+        {
+            cout<<"dame x2\n";
+            cin>>x1;
+        }
+        while(!(x-x1==2 || x-x1==-2));
+        if(x-x1==-2)
+        {
+            for(int i=0; i<3;i++)
+            {
+                matrizJugador[y-1][x+i-1]=posBarco1[i];
+            }
+        }
+        else
+        {
+            for(int i=0; i<3;i++)
+            {
+                matrizJugador[y-1][x-i-1]=posBarco1[i];
+            }
+        }
+    }
+    else
+    {
+        do
+        {
+            cout<<"dame y2\n";
+            cin>>y1;
+        }
+        while(!(y-y1==2 || y-y1==-2));
+        if(y-y1==-2)
+        {
+            for(int i=0; i<3;i++)
+            {
+                matrizJugador[y+i-1][x-1]=posBarco1[i];
+            }
+        }
+        else
+        {
+            for(int i=0; i<3;i++)
+            {
+                matrizJugador[y-i-1][x-1]=posBarco1[i];
+            }
+        }
+    }
+    system("cls");
+}
+
+void posicionarBarco2(int &k)
+{
+    cout<<"\n\nPosiciona el barco #2 (2 espacios)\n";
+    cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
+    cin>>orientacion;
+    cout<<"dame x1\n";
+    cin>>x;
+    cout<<"dame y1\n";
+    cin>>y;
+    if (orientacion)
+    {
+        do
+        {
+            cout<<"dame x2\n";
+            cin>>x1;
+        }
+        while(!(x-x1==1 || x-x1==-1));
+        if(x-x1==-1)
+        {
+                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-1][x+1-1]==0)
+                {
+                    matrizJugador[y-1][x-1]=posBarco2[0];
+                    matrizJugador[y-1][x+1-1]=posBarco2[1];
+                }
+                else
+                    k--;
+        }
+        else
+        {
+                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-1][x-2]==0)
+                {
+                    matrizJugador[y-1][x-1]=posBarco2[0];
+                    matrizJugador[y-1][x-2]=posBarco2[1];
+                }
+                else
+                    k--;
+        }
+    }
+    else
+    {
+        do
+        {
+            cout<<"dame y2\n";
+            cin>>y1;
+        }
+        while(!(y-y1==1 || y-y1==-1));
+        if (y-y1==-1)
+        {
+                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y+1-1][x-1]==0)
+                {
+                    matrizJugador[y-1][x-1]=posBarco2[0];
+                    matrizJugador[y+1-1][x-1]=posBarco2[1];
+                }
+                else
+                    k--;
+        }
+        else
+        {
+                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-2][x-1]==0)
+                {
+                    matrizJugador[y-1][x-1]=posBarco2[0];
+                    matrizJugador[y-2][x-1]=posBarco2[1];
+                }
+                else
+                    k--;
+        }
+    }
+    system("cls");
+}
+
+void posicionarBarco3(int &k)
+{
+    cout<<"\n\nPosiciona el barco #3 (2 espacios)\n";
+    cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
+    cin>>orientacion;
+    cout<<"dame x1\n";
+    cin>>x;
+    cout<<"dame y1\n";
+    cin>>y;
+    if (orientacion)
+    {
+        do
+        {
+            cout<<"dame x2\n";
+            cin>>x1;
+        }
+        while(!(x-x1==1 || x-x1==-1));
+        if (x-x1==-1)
+        {
+                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-1][x+1-1]==0)
+                {
+                    matrizJugador[y-1][x-1]=posBarco3[0];
+                    matrizJugador[y-1][x+1-1]=posBarco3[1];
+                }
+                else
+                    k--;
+        }
+        else
+        {
+                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-1][x-2]==0)
+                {
+                    matrizJugador[y-1][x-1]=posBarco3[0];
+                    matrizJugador[y-1][x-2]=posBarco3[1];
+                }
+                else
+                    k--;
+        }
+    }
+    else
+    {
+        do
+        {
+            cout<<"dame y2\n";
+            cin>>y1;
+        }
+        while(!(y-y1==1 || y-y1==-1));
+        if(y-y1==-1)
+        {
+                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y+1-1][x-1]==0)
+                {
+                    matrizJugador[y-1][x-1]=posBarco3[0];
+                    matrizJugador[y+1-1][x-1]=posBarco3[1];
+                }
+                else
+                    k--;
+        }
+        else
+        {
+                if (matrizJugador[y-1][x-1]==0 && matrizJugador[y-2][x-1]==0)
+                {
+                    matrizJugador[y-1][x-1]=posBarco3[0];
+                    matrizJugador[y-2][x-1]=posBarco3[1];
+                }
+                else
+                    k--;
+        }
+
+    }
+    system("cls");
+}
+
+void posicionarBarco4(int &k)
+{
+    cout<<"\n\nPosiciona el barco #4 (1 espacio)\n";
+    cout<<"dame x1\n";
+    cin>>x;
+    cout<<"dame y1\n";
+    cin>>y;
+    if (matrizJugador[y-1][x-1]==0)
+        matrizJugador[y-1][x-1]=posBarco4[0];
+    else
+        k--;
+    system("cls");
+}
+
 void Singleplayer(void)
 {
     cout<<"Se seleccionó el modo un jugador"<<endl;
@@ -195,7 +475,3 @@ void playerturn(int&x,int&y){
         cout<<"\n";
     return;
 }
-
-
-
-
