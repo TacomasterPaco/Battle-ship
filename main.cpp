@@ -5,6 +5,8 @@
 #include <windows.h>////Es una libreria  que contiene las declaraciones de todas las funcionees
                     //de  la biblioteca Windows API.
 #include <string> //Nos sirve para manipular arreglos y strings
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 using namespace std;
 
