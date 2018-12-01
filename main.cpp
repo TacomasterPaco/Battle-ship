@@ -358,6 +358,7 @@ void Singleplayer(void)
             playerturn(x,y);//func to set coord og shoot
             if((matrizEnemigo[x][y]%2)==0){//if water or boat increase value by one to chage to miss ot hit
                 matrizEnemigo[x][y]++;
+		matrizJugador2[x][y]=matrizEnemigo[x][y];
                 if(matrizEnemigo[x][y]==3){
                     cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
                     boats_sunk1--;
@@ -377,6 +378,7 @@ void Singleplayer(void)
             computerturn(x,y,lasthitcompturn,lasthitcomx,lasthitcomy);
             if((matrizJugador[x][y]%2)==0){
                 matrizJugador[x][y]++;
+		matrizRevelada[x][y]=matrizJugador[x][y];
                 if(matrizJugador[x][y]==3){
                     cout<<"\nhit\n";
                     boats_sunk2--;
@@ -407,6 +409,7 @@ void Multiplayer(void)
             playerturn(x,y);//func to set coord og shoot
             if((matrizEnemigo[x][y]%2)==0){//if water or boat increase value by one to chage to miss ot hit
                 matrizEnemigo[x][y]++;
+		matrizJugador2[x][y]=matrizEnemigo[x][y];
                 if(matrizEnemigo[x][y]==3){
                     cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
                     boats_sunk1--;
@@ -426,6 +429,7 @@ void Multiplayer(void)
             playerturn(x,y);
             if((matrizJugador[x][y]%2)==0){
                 matrizJugador[x][y]++;
+		matrizRevelada[x][y]=matrizJugador[x][y];
                 if(matrizJugador[x][y]==3){
                     cout<<"\nhit\n";
                     boats_sunk2--;
