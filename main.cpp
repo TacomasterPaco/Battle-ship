@@ -80,11 +80,11 @@ int main()
             cout<<endl<<"\tINGRESE UNA OPCION CORRECTA"<<endl;
         }
     }
-  
+
   imprimirPantalla();
-  
-  
-  
+
+
+
 return 0;//AQUI ACABA MAIN----------------------------------------------------------------------------------------------------
 }
 
@@ -112,7 +112,7 @@ void imprimirPantalla()
     {
         cout<<endl<<i+1;
         for(int j=0;j<NUMCOLAS;j++)
-            cout<<setw(4)<<matrizJugador2[i][j];
+            cout<<setw(4)<<matrizEnemigo[i][j];
     }
     cout<<"\n------------------------------------\n";
     cout<<setw(5)<<"1"<<setw(4)<<"2"<<setw(4)<<"3"<<setw(4)<<"4"<<setw(4)<<"5"<<setw(4)<<"6";
@@ -248,7 +248,7 @@ void posicionarBarco2(int &k)
 
 void posicionarBarco3(int &k)
 {
-    cout<<"\n\nPosiciona el barco #3 (2 espacios)\n";	
+    cout<<"\n\nPosiciona el barco #3 (2 espacios)\n";
 		//Esta función recibe una variable entera pero desde la dirección
     darcoordenadas1(orientacion,x,y);
     if (orientacion)
@@ -328,9 +328,9 @@ void posicionarBarco4(int &k)
 
 void darcoordenadas1(int &orientacion, int &x, int &y)
 {
+    do{
     cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
     cin>>orientacion;
-    do{
     cout<<"dame x1\n";
     cin>>x;
     cout<<"dame y1\n";
@@ -536,9 +536,10 @@ void ponerBarcos()
 }
 void darcoordenadas2(int &orientacion, int &x, int &y)
 {
+
+    do{
     srand(time(0));
     orientacion=rand() % 1+0;
-    do{
     srand(time(0));
     x=rand() % 5+0;
     srand(time(0));
