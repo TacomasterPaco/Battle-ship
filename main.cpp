@@ -335,7 +335,7 @@ void darcoordenadas1(bool &orientacion, int &x, int &y)
 
 void Singleplayer(void)
 {
-    cout<<"Se seleccionó el modo multiplayer"<<endl;
+    cout<<"Se seleccionó el modo singleplayer"<<endl;
     const int martizss=6;
     int first_to_go=1 ,turns = 0, boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0,
     matrizplyer2[martizss][martizss]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -442,7 +442,6 @@ SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),X);
 }
 void computerturn(int&x,int&y,int&lasthitcompturn,int lasthitcomx, int lasthitcomy)
 {
-    cout<<"si";//cumputer rurjr
     srand(time(0));
     x=rand() % 5+0;
     srand(time(0));
