@@ -24,7 +24,7 @@ const int NUMFILAS=6;
 const int NUMCOLAS=6;
 int matrizJugador[NUMFILAS][NUMCOLAS]={0};
 int matrizEnemigo[NUMFILAS][NUMCOLAS]={0};
-int matrizOculta[NUMFILAS][NUMCOLAS]={0};
+int matrizRevelada[NUMFILAS][NUMCOLAS]={0};
 int matrizJugador2[NUMFILAS][NUMCOLAS]={0};
 
 int posBarco1[3]={2,2,2};
