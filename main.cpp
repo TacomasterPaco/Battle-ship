@@ -672,7 +672,7 @@ void posicionarEnemigo2(int &k)
     system("cls");
 }
 
-void posicionarBarco3(int &k)
+void posicionarEnemigo3(int &k)
 {
     cout<<"\n\nPosiciona el barco #3 (2 espacios)\n";
 		//Esta función recibe una variable entera pero desde la dirección
@@ -741,7 +741,7 @@ void posicionarBarco3(int &k)
     system("cls");
 }
 
-void posicionarBarco4(int &k)
+void posicionarEnemigo4(int &k)
 {
     cout<<"\n\nPosiciona el barco #4 (1 espacio)\n";
     darcoordenadas2(orientacion,x,y);
