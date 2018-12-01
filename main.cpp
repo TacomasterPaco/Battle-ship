@@ -534,3 +534,19 @@ void ponerBarcos()
         }
     }
 }
+void darcoordenadas2(int &orientacion, int &x, int &y)
+{
+    srand(time(0));
+    orientacion=rand() % 1+0;
+    do{
+    srand(time(0));
+    x=rand() % 5+0;
+    srand(time(0));
+    y=rand() % 5+0;
+    if (!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)))
+        cout<<"Coordenada fuera de rango\n";
+    }
+    while(!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)));
+    x--;
+    y--;
+}
