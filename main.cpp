@@ -36,7 +36,7 @@ int posEnemigo2[2]={2,2};
 int posEnemigo3[2]={2,2};
 int posEnemigo4[1]={2};
 int k=0, x=1, y=1, y1=0, x1=0;
-bool orientacion= 0;
+int orientacion= 0;
 
 void imprimirPantalla();
 void posicionarBarco1(int &k);
@@ -44,7 +44,7 @@ void posicionarBarco2(int &k);
 void posicionarBarco3(int &k);
 void posicionarBarco4(int &k);
 void ponerBarcos();
-void darcoordenadas1(bool &orientacion, int &x, int &y);
+void darcoordenadas1(int &orientacion, int &x, int &y);
 
 int main()
 {
@@ -326,7 +326,7 @@ void posicionarBarco4(int &k)
     system("cls");
 }
 
-void darcoordenadas1(bool &orientacion, int &x, int &y)
+void darcoordenadas1(int &orientacion, int &x, int &y)
 {
     cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
     cin>>orientacion;
