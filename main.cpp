@@ -24,7 +24,7 @@ const int NUMFILAS=6;
 const int NUMCOLAS=6;
 int matrizJugador[NUMFILAS][NUMCOLAS]={0};
 int matrizEnemigo[NUMFILAS][NUMCOLAS]={0};
-int matrizOculta[NUMFILAS][NUMCOLAS]={0};
+int matrizOculta[NUMFILAS][NUMCOLAS]={0};//0=water,1=miss,2=boat,3=hit
 
 int posBarco1[3]={1,1,1};
 int posBarco2[2]={1,1};
@@ -388,10 +388,7 @@ void Singleplayer(void)
 void Multiplayer(void)
 {
     cout<<"Se seleccionó el modo multiplayer"<<endl;
-    const int martizss=6;
     int first_to_go=0, boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0,
-    matrizplyer2[martizss][martizss]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-    matrizplyer1[martizss][martizss]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};//0=water,1=miss,2=boat,3=hit
     srand(time(0));
     first_to_go=rand() % 2+1;
     for(int i =0;i<72;i++){//limit 72 due to number of possilbe turnsorhits
@@ -399,9 +396,9 @@ void Multiplayer(void)
         i=72;
         if(first_to_go==1){
             playerturn(x,y);//func to set coord og shoot
-            if((matrizplyer2[x][y]%2)==0){//if water or boat increase value by one to chage to miss ot hit
-                matrizplyer2[x][y]++;
-                if(matrizplyer2[x][y]==3){
+            if((matrizEnemigo[x][y]%2)==0){//if water or boat increase value by one to chage to miss ot hit
+                matrizEnemigo[x][y]++;
+                if(matrizEnemigo[x][y]==3){
                     cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
                     boats_sunk1--;
                     continue;
@@ -411,16 +408,16 @@ void Multiplayer(void)
                     first_to_go++;
                 }
             }
-            else if((matrizplyer2[x][y]%2)==1){
+            else if((matrizEnemigo[x][y]%2)==1){
                 cout<<"\nalredy fired there\n";
                 continue;
             }
         }
         else if(first_to_go==2){
             playerturn(x,y);
-            if((matrizplyer1[x][y]%2)==0){
-                matrizplyer1[x][y]++;
-                if(matrizplyer1[x][y]==3){
+            if((matrizJugador[x][y]%2)==0){
+                matrizJugador[x][y]++;
+                if(matrizJugador[x][y]==3){
                     cout<<"\nhit\n";
                     boats_sunk2--;
                     continue;
@@ -430,7 +427,7 @@ void Multiplayer(void)
                     first_to_go--;
                 }
             }
-            else if((matrizplyer1[x][y]%2)==1){
+            else if((matrizJugador[x][y]%2)==1){
                 cout<<"\naleady fired there\n";
                 continue;
             }
