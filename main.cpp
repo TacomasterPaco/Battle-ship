@@ -213,7 +213,7 @@ void posicionarBarco2(int &k)
         while(!(x-x1==1 || x-x1==-1));
         if(x-x1==-1)
         {
-                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x+1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y][x+1]==0)
                 {
                     matrizJugador[y][x]=posBarco2[0];
                     matrizJugador[y][x+1]=posBarco2[1];
