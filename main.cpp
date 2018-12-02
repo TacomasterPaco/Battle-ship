@@ -376,10 +376,12 @@ void Singleplayer(void)
       if(boats_sunk1==0||boats_sunk2==0){
         i=72;
         if(boats_sunk1==0){
-            cout<<"Player 1 gano";
+	    system("cls");
+            cout<<"Player 1 gano\n";
             continue;}
         else{
-            cout<<"Com gano";
+	    system("cls");
+            cout<<"Com gano\n";
             continue;}
 
       }
@@ -445,9 +447,11 @@ void Multiplayer(void)
       if(boats_sunk1==0||boats_sunk2==0){
         i=72;
         if(boats_sunk1==0){
+	    system("cls");
             cout<<"Player 1 gano";
             continue;}
         else{
+	    system("cls");
             cout<<"Player2 gano";
             continue;}
 
