@@ -283,7 +283,8 @@ int main()
         }
     }
 
-  imprimirPantalla();
+  if(op!=3)
+	  imprimirPantalla();
 
 
 
