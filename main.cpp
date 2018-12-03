@@ -900,5 +900,5 @@ void posicionarEnemigo4(int &k)
 }
 void delay()
 {
-    for(int i = (time(NULL) + 1); time(NULL) != i; time(NULL));
+    for(int i = (time(NULL) + 2); time(NULL) != i; time(NULL));
 }
