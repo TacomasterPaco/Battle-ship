@@ -151,7 +151,7 @@ void posicionarBarco1(int &k)
     {
         do
         {
-            cout<<"dame x2\n";
+            cout<<"x2:\n";
             cin>>x1;
             x1--;
         }
@@ -175,7 +175,7 @@ void posicionarBarco1(int &k)
     {
         do
         {
-            cout<<"dame y2\n";
+            cout<<"y2:\n";
             cin>>y1;
             y1--;
         }
@@ -206,7 +206,7 @@ void posicionarBarco2(int &k)
     {
         do
         {
-            cout<<"dame x2\n";
+            cout<<"x2:\n";
             cin>>x1;
             x1--;
         }
@@ -236,7 +236,7 @@ void posicionarBarco2(int &k)
     {
         do
         {
-            cout<<"dame y2\n";
+            cout<<"y2:\n";
             cin>>y1;
             y1--;
         }
@@ -274,7 +274,7 @@ void posicionarBarco3(int &k)
     {
         do
         {
-            cout<<"dame x2\n";
+            cout<<"x2:\n";
             cin>>x1;
             x1--;
         }
@@ -304,7 +304,7 @@ void posicionarBarco3(int &k)
     {
         do
         {
-            cout<<"dame y2\n";
+            cout<<"y2:\n";
             cin>>y1;
             y1--;
         }
@@ -350,9 +350,9 @@ void darcoordenadas1(int &orientacion, int &x, int &y)
     do{
     cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
     cin>>orientacion;
-    cout<<"dame x1\n";
+    cout<<"x1:\n";
     cin>>x;
-    cout<<"dame y1\n";
+    cout<<"y1:\n";
     cin>>y;
     if (!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)))
         cout<<"Coordenada fuera de rango\n";
@@ -399,13 +399,13 @@ void Singleplayer(void)
                     continue;
                 }
                 else{
-                    cout<<"\nmixx\nnext2\n";
+                    cout<<"\nmiss\nSiguiente: Comp\n";
                     delay ();
                     first_to_go++;
                 }
             }
             else if((matrizEnemigo[y][x]%2)==1){
-                cout<<"\nalredy fired there\n";
+                cout<<"\nYa disparo alli\n";
                 delay ();
                 continue;
             }
@@ -425,7 +425,7 @@ void Singleplayer(void)
                     continue;
                 }
                 else{
-                    cout<<"\nmiss\nnext1\n";
+                    cout<<"\nmiss\nSiguiente: Jugador\n";
                     first_to_go--;
                     delay ();
                 }
@@ -476,12 +476,12 @@ void Multiplayer(void)
                     continue;
                 }
                 else{
-                    cout<<"\nmixx\nnext2\n";
+                    cout<<"\nmiss\nSiguiente: Jugador2\n";
                     first_to_go++;
                 }
             }
             else if((matrizEnemigo[y][x]%2)==1){
-                cout<<"\nalredy fired there\n";
+                cout<<"\nYa disparo alli\n";
                 continue;
             }
         }
@@ -497,12 +497,12 @@ void Multiplayer(void)
                     continue;
                 }
                 else{
-                    cout<<"\nmiss\nnext1\n";
+                    cout<<"\nmiss\nSiguiente: Jugador1\n";
                     first_to_go--;
                 }
             }
             else if((matrizJugador[y][x]%2)==1){
-                cout<<"\naleady fired there\n";
+                cout<<"\nYa disparo alli\n";
                 continue;
             }
         }
@@ -572,11 +572,11 @@ void playerturn(int&x,int&y){
     x--;
     y--;
     if(x>5||x<-1){
-        cout<<"poner cordenada correcta\n";
+        cout<<"poner coordenada correcta\n";
         playerturn(x,y);
     }
     else if(y>5||y<-1){
-        cout<<"poner cordenada correcta\n";
+        cout<<"poner coordenada correcta\n";
         playerturn(x,y);
     }
     else
@@ -644,9 +644,9 @@ void darcoordenadas2(int &orientacion, int &x, int &y)
         do{
             cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
             cin>>orientacion;
-            cout<<"dame x1\n";
+            cout<<"x1:\n";
             cin>>x;
-            cout<<"dame y1\n";
+            cout<<"y1:\n";
             cin>>y;
             if (!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)))
                 cout<<"Coordenada fuera de rango\n";
@@ -674,7 +674,7 @@ void posicionarEnemigo1(int &k)
         do
         {
             if(op==2){
-                cout<<"dame x2\n";
+                cout<<"x2:\n";
                 cin>>x1;
                 x1--;}
             else{
@@ -703,7 +703,7 @@ void posicionarEnemigo1(int &k)
         do
         {
             if(op==2){
-                cout<<"dame y2\n";
+                cout<<"y2:\n";
                 cin>>y1;
                 y1--;}
             else{
@@ -740,7 +740,7 @@ void posicionarEnemigo2(int &k)
         do
         {
             if(op==2){
-                cout<<"dame x2\n";
+                cout<<"x2:\n";
                 cin>>x1;
                 x1--;}
             else{
@@ -775,7 +775,7 @@ void posicionarEnemigo2(int &k)
         do
         {
             if(op==2){
-                cout<<"dame y2\n";
+                cout<<"y2:\n";
                 cin>>y1;
                 y1--;}
             else{
@@ -819,7 +819,7 @@ void posicionarEnemigo3(int &k)
         do
         {
             if(op==2){
-                cout<<"dame x2\n";
+                cout<<"x2:\n";
                 cin>>x1;
                 x1--;}
             else{
@@ -854,7 +854,7 @@ void posicionarEnemigo3(int &k)
         do
         {
             if(op==2){
-                cout<<"dame y2\n";
+                cout<<"y2:\n";
                 cin>>y1;
                 y1--;}
             else{
