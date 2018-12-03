@@ -473,15 +473,18 @@ void Multiplayer(void)
                 if(matrizEnemigo[y][x]==3){
                     cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
                     boats_sunk1--;
+		    delay ();
                     continue;
                 }
                 else{
                     cout<<"\nmiss\nSiguiente: Jugador2\n";
+		    delay ();
                     first_to_go++;
                 }
             }
             else if((matrizEnemigo[y][x]%2)==1){
                 cout<<"\nYa disparo alli\n";
+		delay ();
                 continue;
             }
         }
@@ -494,15 +497,18 @@ void Multiplayer(void)
                 if(matrizJugador[y][x]==3){
                     cout<<"\nhit\n";
                     boats_sunk2--;
+		    delay ();
                     continue;
                 }
                 else{
                     cout<<"\nmiss\nSiguiente: Jugador1\n";
+		    delay ();
                     first_to_go--;
                 }
             }
             else if((matrizJugador[y][x]%2)==1){
                 cout<<"\nYa disparo alli\n";
+		delay ();
                 continue;
             }
         }
