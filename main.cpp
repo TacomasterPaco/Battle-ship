@@ -151,7 +151,7 @@ void posicionarBarco1(int &k)
     {
         do
         {
-            cout<<"dame x2\n";
+            cout<<"x2:\n";
             cin>>x1;
             x1--;
         }
@@ -175,7 +175,7 @@ void posicionarBarco1(int &k)
     {
         do
         {
-            cout<<"dame y2\n";
+            cout<<"y2:\n";
             cin>>y1;
             y1--;
         }
@@ -206,7 +206,7 @@ void posicionarBarco2(int &k)
     {
         do
         {
-            cout<<"dame x2\n";
+            cout<<"x2:\n";
             cin>>x1;
             x1--;
         }
@@ -236,7 +236,7 @@ void posicionarBarco2(int &k)
     {
         do
         {
-            cout<<"dame y2\n";
+            cout<<"y2:\n";
             cin>>y1;
             y1--;
         }
@@ -274,7 +274,7 @@ void posicionarBarco3(int &k)
     {
         do
         {
-            cout<<"dame x2\n";
+            cout<<"x2:\n";
             cin>>x1;
             x1--;
         }
@@ -304,7 +304,7 @@ void posicionarBarco3(int &k)
     {
         do
         {
-            cout<<"dame y2\n";
+            cout<<"y2:\n";
             cin>>y1;
             y1--;
         }
@@ -350,9 +350,9 @@ void darcoordenadas1(int &orientacion, int &x, int &y)
     do{
     cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
     cin>>orientacion;
-    cout<<"dame x1\n";
+    cout<<"x1:\n";
     cin>>x;
-    cout<<"dame y1\n";
+    cout<<"y1:\n";
     cin>>y;
     if (!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)))
         cout<<"Coordenada fuera de rango\n";
@@ -365,7 +365,7 @@ void darcoordenadas1(int &orientacion, int &x, int &y)
 
 void Singleplayer(void)
 {
-    cout<<"Se seleccionó el modo singleplayer"<<endl;
+    cout<<"Se selecciono el modo singleplayer"<<endl;
     int boats_sunk1=8,boats_sunk2=8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0;
     imprimirPantalla();
     ponerBarcos();
@@ -377,11 +377,11 @@ void Singleplayer(void)
         i=72;
         if(boats_sunk1==0){
 	    system("cls");
-            cout<<"Player 1 gano\n";
+            cout<<"Jugador gano\n";
             continue;}
         else{
 	    system("cls");
-            cout<<"Com gano\n";
+            cout<<"La Computadora gano\n";
             continue;}
 
       }
@@ -393,19 +393,19 @@ void Singleplayer(void)
                 matrizEnemigo[y][x]++;
                 matrizJugador2[y][x]=matrizEnemigo[y][x];
                 if(matrizEnemigo[y][x]==3){
-                    cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
+                    cout<<"\nACERTASTE\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
                     boats_sunk1--;
                     delay ();
                     continue;
                 }
                 else{
-                    cout<<"\nmixx\nnext2\n";
+                    cout<<"\nFALLO\nTURNO DE LA COMPUTADORA\n";
                     delay ();
                     first_to_go++;
                 }
             }
             else if((matrizEnemigo[y][x]%2)==1){
-                cout<<"\nalredy fired there\n";
+                cout<<"\nYA DISPARASTE AHI\n";
                 delay ();
                 continue;
             }
@@ -416,7 +416,7 @@ void Singleplayer(void)
                 matrizJugador[y][x]++;
                 matrizRevelada[y][x]=matrizJugador[y][x];
                 if(matrizJugador[y][x]==3){
-                    cout<<"\nhit\n";
+                    cout<<"\n\n";
                     lasthitcomx=x;
                     lasthitcomy=y;
                     lasthitcompturn=1;
@@ -425,7 +425,7 @@ void Singleplayer(void)
                     continue;
                 }
                 else{
-                    cout<<"\nmiss\nnext1\n";
+                    cout<<"\nACERTO\nTU TURNO\n";
                     first_to_go--;
                     delay ();
                 }
@@ -438,7 +438,7 @@ void Singleplayer(void)
 }
 void Multiplayer(void)
 {
-    cout<<"Se seleccionó el modo multiplayer"<<endl;
+    cout<<"Se seleccionó el modo 1v1"<<endl;
     int boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0,useless=0;
     imprimirPantalla();
     ponerBarcos();
@@ -453,16 +453,16 @@ void Multiplayer(void)
         i=72;
         if(boats_sunk1==0){
 	    system("cls");
-            cout<<"Player 1 gano";
+            cout<<"JUGADOR 1 gano";
             continue;}
         else{
 	    system("cls");
-            cout<<"Player2 gano";
+            cout<<"JUGADOR 2 gano";
             continue;}
 
       }
         system("cls");
-	cout<<"\nListo player"<<first_to_go<<"?(poner un numero)\n";
+	cout<<"\nListo jugador 1"<<first_to_go<<"?(poner un numero)\n";
         cin>>useless;
         if(first_to_go==1){
             imprimirPantalla();
@@ -471,17 +471,17 @@ void Multiplayer(void)
                 matrizEnemigo[y][x]++;
                 matrizJugador2[y][x]=matrizEnemigo[y][x];
                 if(matrizEnemigo[y][x]==3){
-                    cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
+                    cout<<"\nACERTASTE\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
                     boats_sunk1--;
                     continue;
                 }
                 else{
-                    cout<<"\nmixx\nnext2\n";
+                    cout<<"\nFALLO\nTURNO DEL JUGADOR 2\n";
                     first_to_go++;
                 }
             }
             else if((matrizEnemigo[y][x]%2)==1){
-                cout<<"\nalredy fired there\n";
+                cout<<"\nYA DISPARASTE A AHI\n";
                 continue;
             }
         }
@@ -492,17 +492,17 @@ void Multiplayer(void)
                 matrizJugador[y][x]++;
                 matrizRevelada[y][y]=matrizJugador[y][x];
                 if(matrizJugador[y][x]==3){
-                    cout<<"\nhit\n";
+                    cout<<"\nACERTASTE\n";
                     boats_sunk2--;
                     continue;
                 }
                 else{
-                    cout<<"\nmiss\nnext1\n";
+                    cout<<"\nFALLO\nTURNO DEL JUGADOR 1\n";
                     first_to_go--;
                 }
             }
             else if((matrizJugador[y][x]%2)==1){
-                cout<<"\naleady fired there\n";
+                cout<<"\YA DISPARASTE AHI\n";
                 continue;
             }
         }
@@ -572,11 +572,11 @@ void playerturn(int&x,int&y){
     x--;
     y--;
     if(x>5||x<-1){
-        cout<<"poner cordenada correcta\n";
+        cout<<"ELIJA UNA COORDENADA DENTRO DEL RANGO\n";
         playerturn(x,y);
     }
     else if(y>5||y<-1){
-        cout<<"poner cordenada correcta\n";
+        cout<<"ELIJA UNA COORDENADA DENTRO DEL RANGO\n";
         playerturn(x,y);
     }
     else
@@ -644,9 +644,9 @@ void darcoordenadas2(int &orientacion, int &x, int &y)
         do{
             cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
             cin>>orientacion;
-            cout<<"dame x1\n";
+            cout<<"x1:\n";
             cin>>x;
-            cout<<"dame y1\n";
+            cout<<"y1:\n";
             cin>>y;
             if (!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)))
                 cout<<"Coordenada fuera de rango\n";
@@ -667,14 +667,12 @@ void darcoordenadas2(int &orientacion, int &x, int &y)
 void posicionarEnemigo1(int &k)
 {
     if(op==2)
-        cout<<"\n\nPosiciona el barco #1 (3 espacios)\n";
     darcoordenadas2(orientacion,x,y);
     if (orientacion)
     {
         do
         {
             if(op==2){
-                cout<<"dame x2\n";
                 cin>>x1;
                 x1--;}
             else{
@@ -703,7 +701,6 @@ void posicionarEnemigo1(int &k)
         do
         {
             if(op==2){
-                cout<<"dame y2\n";
                 cin>>y1;
                 y1--;}
             else{
@@ -733,14 +730,12 @@ void posicionarEnemigo1(int &k)
 void posicionarEnemigo2(int &k)
 {
     if(op==2)
-        cout<<"\n\nPosiciona el barco #2 (2 espacios)\n";
     darcoordenadas2(orientacion,x,y);
     if (orientacion)
     {
         do
         {
             if(op==2){
-                cout<<"dame x2\n";
                 cin>>x1;
                 x1--;}
             else{
@@ -775,7 +770,6 @@ void posicionarEnemigo2(int &k)
         do
         {
             if(op==2){
-                cout<<"dame y2\n";
                 cin>>y1;
                 y1--;}
             else{
@@ -810,16 +804,13 @@ void posicionarEnemigo2(int &k)
 
 void posicionarEnemigo3(int &k)
 {
-    if(op==2)
-        cout<<"\n\nPosiciona el barco #3 (2 espacios)\n";
-		//Esta función recibe una variable entera pero desde la dirección
+    if(op==2)//Esta función recibe una variable entera pero desde la dirección
     darcoordenadas2(orientacion,x,y);
     if (orientacion)
     {
         do
         {
             if(op==2){
-                cout<<"dame x2\n";
                 cin>>x1;
                 x1--;}
             else{
@@ -854,7 +845,6 @@ void posicionarEnemigo3(int &k)
         do
         {
             if(op==2){
-                cout<<"dame y2\n";
                 cin>>y1;
                 y1--;}
             else{
@@ -892,7 +882,6 @@ void posicionarEnemigo3(int &k)
 void posicionarEnemigo4(int &k)
 {
     if(op==2)
-        cout<<"\n\nPosiciona el barco #4 (1 espacio)\n";
     darcoordenadas2(orientacion,x,y);
     if (matrizEnemigo[y][x]==0)
         matrizEnemigo[y][x]=posBarco4[0];
