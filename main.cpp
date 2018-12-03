@@ -434,7 +434,7 @@ void Singleplayer(void)
 void Multiplayer(void)
 {
     cout<<"Se seleccionó el modo multiplayer"<<endl;
-    int boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0;
+    int boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0,useless=0;
     imprimirPantalla();
     ponerBarcos();
     system("cls");
@@ -457,9 +457,11 @@ void Multiplayer(void)
 
       }
         system("cls");
+	cout<<"Player"<<first_to_go<<" ready?(enter 1)\n";
+	cin>>useless;
         if(first_to_go==1){
             imprimirPantalla();
-            playerturn(x,y);//func to set coord og shoot
+            playertur\nn(x,y);//func to set coord og shoot
             if((matrizEnemigo[y][x]%2)==0){//if water or boat increase value by one to chage to miss ot hit
                 matrizEnemigo[y][x]++;
                 matrizJugador2[y][x]=matrizEnemigo[y][x];
