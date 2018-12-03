@@ -693,7 +693,7 @@ void Multiplayer(void)
             playerturn(x,y);
             if((matrizJugador[y][x]%2)==0){
                 matrizJugador[y][x]++;
-                matrizRevelada[y][y]=matrizJugador[y][x];
+                matrizRevelada[y][x]=matrizJugador[y][x];
                 if(matrizJugador[y][x]==3){
                     cout<<"\nhit\n";
                     boats_sunk2--;
