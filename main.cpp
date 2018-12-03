@@ -50,7 +50,7 @@ void playerturn (int&,int&); //Ésta función hace referencia a cuando le toca j
                                     //En caso de que sea Multiplayer la función se llamará 2 veces
                                     // y si es singleplayer solo una vez.
 void computerturn(int&,int&,int&,int,int);//Ésta función se llama cuando se selecciona singleplayer.
-
+void delay();
 
 
 
@@ -395,15 +395,18 @@ void Singleplayer(void)
                 if(matrizEnemigo[y][x]==3){
                     cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
                     boats_sunk1--;
+                    delay ();
                     continue;
                 }
                 else{
                     cout<<"\nmixx\nnext2\n";
+                    delay ();
                     first_to_go++;
                 }
             }
             else if((matrizEnemigo[y][x]%2)==1){
                 cout<<"\nalredy fired there\n";
+                delay ();
                 continue;
             }
         }
@@ -418,11 +421,13 @@ void Singleplayer(void)
                     lasthitcomy=y;
                     lasthitcompturn=1;
                     boats_sunk2--;
+                    delay ();
                     continue;
                 }
                 else{
                     cout<<"\nmiss\nnext1\n";
                     first_to_go--;
+                    delay ();
                 }
             }
             else if((matrizJugador[y][x]%2)==1){
@@ -434,7 +439,7 @@ void Singleplayer(void)
 void Multiplayer(void)
 {
     cout<<"Se seleccionó el modo multiplayer"<<endl;
-    int boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0,useless=0;
+    int boats_sunk1 =8,boats_sunk2 =8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0;
     imprimirPantalla();
     ponerBarcos();
     system("cls");
@@ -457,11 +462,9 @@ void Multiplayer(void)
 
       }
         system("cls");
-	cout<<"Player"<<first_to_go<<" ready?(enter 1)\n";
-	cin>>useless;
         if(first_to_go==1){
             imprimirPantalla();
-            playertur\nn(x,y);//func to set coord og shoot
+            playerturn(x,y);//func to set coord og shoot
             if((matrizEnemigo[y][x]%2)==0){//if water or boat increase value by one to chage to miss ot hit
                 matrizEnemigo[y][x]++;
                 matrizJugador2[y][x]=matrizEnemigo[y][x];
@@ -894,4 +897,8 @@ void posicionarEnemigo4(int &k)
     else
         k--;
     system("cls");
+}
+void delay()
+{
+    for(int i = (time(NULL) + 1); time(NULL) != i; time(NULL));
 }
