@@ -757,7 +757,7 @@ void posicionarEnemigo2(int &k)
         while(!(x-x1==1 || x-x1==-1));
         if(x-x1==-1)
         {
-                if (matrizEnemigo[y][x]==0 && matrizEnemigo[y-1][x+1]==0)
+                if (matrizEnemigo[y][x]==0 && matrizEnemigo[y][x+1]==0)
                 {
                     matrizEnemigo[y][x]=posBarco2[0];
                     matrizEnemigo[y][x+1]=posBarco2[1];
