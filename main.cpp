@@ -1,3 +1,11 @@
+
+  * @file main.cpp
+  * @version 1.0
+  * @date 12/02/2018
+  * @author Juan Pablo Martinez Cantú, Ruben Dominguez Chavez, Daniel Alberto Cota Ochoa, Hugo Edibray Becerra Gandara
+  *
+  *
+  */
 #include <iostream> //Libreria que son de entrada y salida
 #include <iomanip> //Libreria que permite manipular la intefaz
 #include<cstdlib> //Nos permite gestionar la memoria dinamicamente y generar numeros
@@ -10,46 +18,231 @@
 
 using namespace std;
 
-
+/**
+  * @brief Es la constante que define x en la matriz
+  *
+  */
 const int NUMFILAS=6;
+/**
+  * @brief Es la constante que define y en la matriz
+  *
+  */
+
 const int NUMCOLAS=6;
+/**
+  *@brief Esta matriz es de 6x6, y todos sus valores son 0 ya que este es el valor del agua.
+  *@brief Esta matriz se muestra para el jugador, por lo tanto tambien salen los barcos y donde te han tirado
+  */
 int matrizJugador[NUMFILAS][NUMCOLAS]={0};
+/**
+  *@brief Esta matriz es de 6x6, y todos sus valores son 0 ya que este es el valor del agua.
+  *@brief Matriz donde tiene guardad la informacion del enemigo y solo se muestra al enemigo en la parte de abajo
+  *@brief (Cuando es modo SinglePlayer no se muestra)
+  *@brief Tiene guardado donde estan los barcos
+  */
+
 int matrizEnemigo[NUMFILAS][NUMCOLAS]={0};
+/**
+  *@brief Esta matriz es de 6x6, y todos sus valores son 0 ya que este es el valor del agua.
+  *@brief Es la matriz para el segundo jugador o para la computadora.
+  *@brief Solo es visual, muestra donde has dado o fallado
+  */
 int matrizRevelada[NUMFILAS][NUMCOLAS]={0};
+/**
+  *@brief Esta matriz es de 6x6, y todos sus valores son 0 ya que este es el valor del agua
+  @brief Es visual para el jugador 1 para que vea donde ha tirado
+  */
 int matrizJugador2[NUMFILAS][NUMCOLAS]={0};
+/**
+  *@brief Un arreglo que sirve para posicionar el barco del jugador que ocupa 3 lugares, tiene almacenados los valores 2
+  *@brief Pues es el valor que tiene el bote en la logica del juego
+  */
 int posBarco1[3]={2,2,2};
+/**
+  *@brief Un arreglo que sirve para posicionar el barco del jugador que ocupa 2 lugares, tiene almacenados los valores 2
+  *@brief Pues es el valor que tiene el bote en la logica del juego
+  */
 int posBarco2[2]={2,2};
+/**
+  *@brief Un arreglo que sirve para posicionar el barco del jugador que ocupa 2 lugares, tiene almacenados los valores 2
+  *@brief Pues es el valor que tiene el bote en la logica del juego
+  */
 int posBarco3[2]={2,2};
+/**
+  *@brief Un arreglo que sirve para posicionar el barco del jugador que ocupa 1 lugar, tiene almacenados los valores 2
+  *@brief Pues es el valor que tiene el bote en la logica del juego
+  */
 int posBarco4[1]={2};
+/**
+  *@brief Un arreglo que sirve para posicionar el barco tanto del enemigo como del jugador 2
+  *@brief Ocupa 3 lugares, tiene almacenados los valores 2
+  *@brief Pues es el valor que tiene el bote en la logica del juego
+  */
 int posEnemigo1[3]={2,2,2};
+/**
+  *@brief Un arreglo que sirve para posicionar el barco tanto del enemigo como del jugador 2
+  *@brief Ocupa 2 lugares, tiene almacenados los valores 2
+  *@brief Pues es el valor que tiene el bote en la logica del juego
+  */
+
 int posEnemigo2[2]={2,2};
+/**
+  *@brief Un arreglo que sirve para posicionar el barco tanto del enemigo como del jugador 2
+  *@brief Ocupa 2 lugares, tiene almacenados los valores 2
+  *@brief Pues es el valor que tiene el bote en la logica del juego
+  */
+
 int posEnemigo3[2]={2,2};
+/**
+  *@brief Un arreglo que sirve para posicionar el barco tanto del enemigo como del jugador 2
+  *@brief Ocupa 1 lugar, tiene almacenados los valores 2
+  *@brief Pues es el valor que tiene el bote en la logica del juego
+  */
 int posEnemigo4[1]={2};
-int k=0, x=1, y=1, y1=0, x1=0;
+/**
+  *@brief Variable utilizada para poner el orden de los barcos
+  */
+int k=0;
+/**
+  *@brief Variable utilizada para colocar barcos en "x"
+  */
+int x=1;
+/**
+  *@brief Variable utilizada para colocar barcos en "y"
+  */
+int y=1;
+/**
+  *@brief Variable utilizada para medir distancia en "y"
+  */
+int y1=0;
+/**
+  *@brief Variable utilizada para medir distancia en "x"
+  */
+int x1=0;
+/**
+  *@brief Variable utilizada para escoger en que orientacion poner los barcos
+  */
+
 int orientacion= 0;
+/**
+  *@brief Variable utilizada para que el usuario seleccione la operacion que desea realizar
+  */
+
 int op=0; //Aquí se inicializa Op, que es la operación que seleccionará el usuario en el menú
+/**
+  *@brief Variable utilizada para junto con un srand, ver quien va primero
+  */
 int first_to_go=1; //quien va primero y a quien le toca
 
+/**
+ *@brief Esta funcion se encarga de imprimir las coordenadas que el usuario ve
+ *@brief tiene un ciclo for que hace que se vayan imprimiendo hasta llegar a el numero menor de numfilas
+ *@brief
+ */
 void imprimirPantalla();
+/**
+ *@brief Funcion encarga de posicionar el primer barco del jugador, el cual es de 3 lugares
+ *@param K. Se usa la direccion de la variable
+ */
 void posicionarBarco1(int &k);
+/**
+ *@brief Funcion encarga de posicionar el segundo barco del jugador, el cual es de 2 lugares
+ *@param K. Se usa la direccion de la variable
+ */
 void posicionarBarco2(int &k);
+/**
+ *@brief Funcion encarga de posicionar el tercer barco del jugador, el cual es de 2 lugares
+ *@param K. Se usa la direccion de la variable
+ */
 void posicionarBarco3(int &k);
+/**
+ *@brief Funcion encarga de posicionar el cuarto barco del jugador, el cual es de 1 lugar
+ *@param K. Se usa la direccion de la variable
+ */
 void posicionarBarco4(int &k);
+/**
+ *@brief Funcion encarga de posicionar el primer barco del enemigo, el cual es de 3 lugares
+ *@param K. Se usa la direccion de la variable
+ */
 void posicionarEnemigo1(int &k);
+/**
+ *@brief Funcion encarga de posicionar el segundo barco del enemigo, el cual es de 2 lugares
+ *@param K. Se usa la direccion de la variable
+ */
 void posicionarEnemigo2(int &k);
+/**
+ *@brief Funcion encarga de posicionar el tercer barco del enemigo, el cual es de 2 lugares
+ *@param K. Se usa la direccion de la variable
+ */
 void posicionarEnemigo3(int &k);
+/**
+ *@brief Funcion encarga de posicionar el cuarto barco del enemigo, el cual es de 1 lugar
+ *@param K. Se usa la direccion de la variable
+ */
 void posicionarEnemigo4(int &k);
+/**
+ *@brief Se encarga de almacenar todas demas funciones de poner barcos del jugador 1
+ */
 void ponerBarcos();
+/**
+ *@brief Se encarga de almacenar todas demas funciones de poner barcos del jugador 2(o computadora, en SinglePlayer)
+ */
 void ponerBarcos2();
+/**
+ *@brief Se encarga de las coordenas de "x", "y" y la orientacion en la que se quiere poner el barco del primer jugador.
+ *@param Orientacion. Se usa la direccion de la variable
+ *@param X. Se usa la direccion de la variable
+ *@param Y. Se usa la direccion de la variable
+ */
 void darcoordenadas1(int &orientacion, int &x, int &y);
+/**
+ *@brief Se encarga de las coordenas de "x", "y" y la orientacion en la que se quiere poner el barco del segundo jugador(o computadora en SinglePlayer)
+ *@param Orientacion. Se usa la direccion de la variable
+ *@param X. Se usa la direccion de la variable
+ *@param Y. Se usa la direccion de la variable
+ */
+void darcoordenadas2(int &orientacion, int &x, int &y);
+/**
+ *@brief Se encarga de mostrar el menú, consiste de un barco y las opciones, es void, por lo tanto no devuelve nada.
+ *@brief Tiene una función que nos permite cambiar el valor de manera rápida cambiando sólo los numeros
+ */
 void desplegarMenu(); //Esta función nos permite desplegar el menú.
+/**
+ *@brief Se encarga del procedimiento logico para un jugador contra la computadora
+ */
 void Singleplayer(); //Cuando se presiona 1 en el menú, nos lleva a la función SinglePlayer
+/**
+ *@brief Se encarga del procedimiento logico para un jugador contra otro jugador
+ */
 void Multiplayer(); //Cuando presionamos 2 en el menú, nos lleva a la función MultiPlayer
+/**
+ *@brief Esta funcion esta relacionada directamente con un comando que nos permite cambiar facilmente el color de un texto, solo con cambiar los numeros
+ *@param X. Esta variable esta declarada dentro de la funcion y es la que permite el cambio de color rapido
+ */
 void color(int X); //Ésta función hace referencia a un comando que nos permite cambiar el color de las letras dependiendo de donde se selccione
+/**
+ *@brief Es la responsable de cuando el usuario va a tirar, ya sea el primer jugador o el segundo.
+ *@param X. Coordenada en X
+ *@param Y. Cooordenada en Y
+ */
 void playerturn (int&,int&); //Ésta función hace referencia a cuando le toca jugar a la persona,
                                     //En caso de que sea Multiplayer la función se llamará 2 veces
                                     // y si es singleplayer solo una vez.
+/**
+ *@brief Es la que se ejecuta cuando la computadora va a tirar,se selecciona un valor "x" y "y" del 0 al 5 al azar
+ *@brief Si en los tiros recientes acierta, se utiliza recursion y un switch para que la computadora revise los puntos alrededor del ultimo "Hit"
+ *@param X. Coordenada en X
+ *@param Y. Cooordenada en Y.U
+ *@param lasthitcompturn. Usa la direccion de la variable.Se suma 1 cada vez que le da a un barco y se usa para saber el caso en el que va a tirar alrededor el ultimo punto en el que marco "Hit"
+ *@param lasthitcomx. Almacena la coordenada en "x" en el ultimo punto donde marco "hit"
+ **@param lasthitcomy. Almacena la coordenada en "y" en el ultimo punto donde marco "hit"
+ */
+
 void computerturn(int&,int&,int&,int,int);//Ésta función se llama cuando se selecciona singleplayer.
+
+/**
+ * @brief Hace que el programa se espere 2 segundos para que el usuario pueda ver la pantalla
+ */
 void delay();
 
 
@@ -493,7 +686,7 @@ void Multiplayer(void)
             playerturn(x,y);
             if((matrizJugador[y][x]%2)==0){
                 matrizJugador[y][x]++;
-                matrizRevelada[y][x]=matrizJugador[y][x];
+                matrizRevelada[y][y]=matrizJugador[y][x];
                 if(matrizJugador[y][x]==3){
                     cout<<"\nhit\n";
                     boats_sunk2--;
