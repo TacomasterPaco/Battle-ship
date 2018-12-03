@@ -8,7 +8,7 @@
   */
 #include <iostream> //Libreria que son de entrada y salida
 #include <iomanip> //Libreria que permite manipular la intefaz
-#include<cstdlib> //Nos permite gestionar la memoria dinamicamente y generar numeros
+#include <cstdlib> //Nos permite gestionar la memoria dinamicamente y generar numeros
                 //aleatorios(que es para lo que la usamos en este progama)
 #include <windows.h>////Es una libreria  que contiene las declaraciones de todas las funcionees
                     //de  la biblioteca Windows API.
@@ -340,28 +340,28 @@ void imprimirPantalla()
 void posicionarBarco1(int &k)
 {
     cout<<"\n\nPosiciona el barco #1 (3 espacios)\n";
-    darcoordenadas1(orientacion,x,y);
-    if (orientacion)
+    darcoordenadas1(orientacion,x,y); //pide x y y
+    if (orientacion) //deternima si pide x1 o y1 dependiendo la orientacion
     {
         do
         {
             cout<<"x2:\n";
-            cin>>x1;
-            x1--;
+            cin>>x1; //pide la segunda coordenada
+            x1--; //recorre el valor para concordar con los arreglos
         }
-        while(!(x-x1==2 || x-x1==-2));
-        if(x-x1==-2)
+        while(!(x-x1==2 || x-x1==-2)); //no te deja salir a menos que pongas la segunda coordenada con la distancia correcta
+        if(x-x1==-2) //dependiendo si la distancia negativa o positiva va a poner el barco
         {
             for(int i=0; i<3;i++)
             {
-                matrizJugador[y][x+i]=posBarco1[i];
+                matrizJugador[y][x+i]=posBarco1[i]; //pone el primer barco en la matriz del jugador
             }
         }
         else
         {
             for(int i=0; i<3;i++)
             {
-                matrizJugador[y][x-i]=posBarco1[i];
+                matrizJugador[y][x-i]=posBarco1[i]; //pone el primer barco en la matriz del jugador
             }
         }
     }
@@ -370,60 +370,60 @@ void posicionarBarco1(int &k)
         do
         {
             cout<<"y2:\n";
-            cin>>y1;
+            cin>>y1; //pide la segunda coordenada
             y1--;
         }
         while(!(y-y1==2 || y-y1==-2));
-        if(y-y1==-2)
+        if(y-y1==-2) //dependiendo si la distancia negativa o positiva va a poner el barco
         {
             for(int i=0; i<3;i++)
             {
-                matrizJugador[y+i][x]=posBarco1[i];
+                matrizJugador[y+i][x]=posBarco1[i]; //pone el primer barco en la matriz del jugador
             }
         }
         else
         {
             for(int i=0; i<3;i++)
             {
-                matrizJugador[y-i][x]=posBarco1[i];
+                matrizJugador[y-i][x]=posBarco1[i]; //pone el primer barco en la matriz del jugador
             }
         }
     }
-    system("cls");
+    system("cls"); //borra la pantalla
 }
 
 void posicionarBarco2(int &k)
 {
     cout<<"\n\nPosiciona el barco #2 (2 espacios)\n";
-    darcoordenadas1(orientacion,x,y);
+    darcoordenadas1(orientacion,x,y); //pide x y y
     if (orientacion)
     {
         do
         {
             cout<<"x2:\n";
-            cin>>x1;
+            cin>>x1; //pide la segunda coordenada
             x1--;
         }
         while(!(x-x1==1 || x-x1==-1));
-        if(x-x1==-1)
+        if(x-x1==-1) //dependiendo si la distancia negativa o positiva va a poner el barco
         {
-                if (matrizJugador[y][x]==0 && matrizJugador[y][x+1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y][x+1]==0) //checa si se puede poner el barco en los espacios en blanco
                 {
-                    matrizJugador[y][x]=posBarco2[0];
-                    matrizJugador[y][x+1]=posBarco2[1];
+                    matrizJugador[y][x]=posBarco2[0]; //pone el barco casilla 1
+                    matrizJugador[y][x+1]=posBarco2[1]; //pone barco en la casilla 2
                 }
                 else
-                    k--;
+                    k--; //retrocede al barco aterior que es el mismo si la condicion no se cumple
         }
         else
         {
-                if (matrizJugador[y][x]==0 && matrizJugador[y][x-1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y][x-1]==0) //checa si se puede poner el barco en los espacios en blanco
                 {
                     matrizJugador[y][x]=posBarco2[0];
                     matrizJugador[y][x-1]=posBarco2[1];
                 }
                 else
-                    k--;
+                    k--; //retrocede al barco aterior que es el mismo si la condicion no se cumple
         }
     }
     else
@@ -435,9 +435,9 @@ void posicionarBarco2(int &k)
             y1--;
         }
         while(!(y-y1==1 || y-y1==-1));
-        if (y-y1==-1)
+        if (y-y1==-1) //dependiendo si la distancia negativa o positiva va a poner el barco
         {
-                if (matrizJugador[y][x]==0 && matrizJugador[y+1][x]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y+1][x]==0) //checa si se puede poner el barco en los espacios en blanco
                 {
                     matrizJugador[y][x]=posBarco2[0];
                     matrizJugador[y+1][x]=posBarco2[1];
@@ -447,7 +447,7 @@ void posicionarBarco2(int &k)
         }
         else
         {
-                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x]==0) //checa si se puede poner el barco en los espacios en blanco
                 {
                     matrizJugador[y][x]=posBarco2[0];
                     matrizJugador[y-1][x]=posBarco2[1];
@@ -475,7 +475,7 @@ void posicionarBarco3(int &k)
         while(!(x-x1==1 || x-x1==-1));
         if (x-x1==-1)
         {
-                if (matrizJugador[y][x]==0 && matrizJugador[y][x+1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y][x+1]==0) //checa si se puede poner el barco en los espacios en blanco
                 {
                     matrizJugador[y][x]=posBarco3[0];
                     matrizJugador[y][x+1]=posBarco3[1];
@@ -485,7 +485,7 @@ void posicionarBarco3(int &k)
         }
         else
         {
-                if (matrizJugador[y][x]==0 && matrizJugador[y][x-1]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y][x-1]==0) //checa si se puede poner el barco en los espacios en blanco
                 {
                     matrizJugador[y][x]=posBarco3[0];
                     matrizJugador[y][x-1]=posBarco3[1];
@@ -505,7 +505,7 @@ void posicionarBarco3(int &k)
         while(!(y-y1==1 || y-y1==-1));
         if(y-y1==-1)
         {
-                if (matrizJugador[y][x]==0 && matrizJugador[y+1][x]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y+1][x]==0) //checa si se puede poner el barco en los espacios en blanco
                 {
                     matrizJugador[y][x]=posBarco3[0];
                     matrizJugador[y+1][x]=posBarco3[1];
@@ -515,7 +515,7 @@ void posicionarBarco3(int &k)
         }
         else
         {
-                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x]==0)
+                if (matrizJugador[y][x]==0 && matrizJugador[y-1][x]==0) //checa si se puede poner el barco en los espacios en blanco
                 {
                     matrizJugador[y][x]=posBarco3[0];
                     matrizJugador[y-1][x]=posBarco3[1];
@@ -544,14 +544,14 @@ void darcoordenadas1(int &orientacion, int &x, int &y)
     do{
     cout<<"\nHORIZONTAL(1) O VERTICAL(0)\n";
     cin>>orientacion;
-    cout<<"x1:\n";
-    cin>>x;
+    cout<<"x1:\n"; 
+    cin>>x; //pide la coordenada en x
     cout<<"y1:\n";
-    cin>>y;
-    if (!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)))
+    cin>>y; //pide la coordenada en y
+    if (!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0))) //checa que las coordenadas esten dentro de la matriz
         cout<<"Coordenada fuera de rango\n";
     }
-    while(!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0)));
+    while(!((x<=6 && x>=1) && (y<=6 && y>=1) && (orientacion==1 || orientacion==0))); //te pide que las vuelvas a ingresar
     x--;
     y--;
 
@@ -560,14 +560,20 @@ void darcoordenadas1(int &orientacion, int &x, int &y)
 void Singleplayer(void)
 {
     cout<<"Se seleccionó el modo singleplayer"<<endl;
-    int boats_sunk1=8,boats_sunk2=8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0;
+    int boats_sunk1=8,boats_sunk2=8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0; 
+	/*
+	boats_sunk1 casillas restantes para jugador 1
+	boats_sunk2 casillas restantes para jugador 2 o com
+	x coordenadas en x
+	y coordenadas en y
+	*/
     imprimirPantalla();
     ponerBarcos();
     ponerBarcos2();
-    srand(time(0));
+    srand(time(0)); //marca un seed para tener diferentes randoms
     first_to_go=rand() % 2+1;
     for(int i =0;i<72;i){//limit 72 due to number of possilbe turns
-      if(boats_sunk1==0||boats_sunk2==0){
+      if(boats_sunk1==0||boats_sunk2==0){ //por si alguien pierde que se pase a este if
         i=72;
         if(boats_sunk1==0){
 	    system("cls");
@@ -584,10 +590,10 @@ void Singleplayer(void)
             imprimirPantalla();
             playerturn(x,y);//func to set coord og shoot
             if((matrizEnemigo[y][x]%2)==0){//if water or boat increase value by one to chage to miss ot hit
-                matrizEnemigo[y][x]++;
-                matrizJugador2[y][x]=matrizEnemigo[y][x];
+                matrizEnemigo[y][x]++; //hace que el valor se 1 en agua y 3 en barco, asi se sabe si le dio o no
+                matrizJugador2[y][x]=matrizEnemigo[y][x]; //la asigna a la matriz visible
                 if(matrizEnemigo[y][x]==3){
-                    cout<<"\nhit\n";//of hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
+                    cout<<"\nhit\n";//if hit, says and reduces boats leaf to win and turn-- do it doesnt count the free hit as a turn
                     boats_sunk1--;
                     delay ();
                     continue;
@@ -656,8 +662,8 @@ void Multiplayer(void)
 
       }
         system("cls");
-	cout<<"\nListo player"<<first_to_go<<"?(poner un numero)\n";
-        cin>>useless;
+	cout<<"\nListo player"<<first_to_go<<"?(poner un numero)\n"; //para pasar de turno
+        cin>>useless; //solo es para tener una espera entre turnos
         if(first_to_go==1){
             imprimirPantalla();
             playerturn(x,y);//func to set coord og shoot
@@ -711,7 +717,7 @@ void Multiplayer(void)
 
 void color(int X)
 {
-SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),X);
+SetConsoleTextAttribute(GetStdHandle (STD_OUTPUT_HANDLE),X); //esta instruccion nos deja manipular los colores de la consola
 }
 void computerturn(int&x,int&y,int&lasthitcompturn,int lasthitcomx, int lasthitcomy)
 {
@@ -786,7 +792,7 @@ void playerturn(int&x,int&y){
 
 void ponerBarcos()
 {
-  for (k = 1; k <= 4; k++)
+  for (k = 1; k <= 4; k++) //este for nos ayuda a que se incremente la funcion y tener control si no es valida algun dato introducido por el usuario
     {
         switch (k)
         {
@@ -939,11 +945,11 @@ void posicionarEnemigo2(int &k)
     {
         do
         {
-            if(op==2){
+            if(op==2){ //para multiplayer
                 cout<<"x2:\n";
                 cin>>x1;
                 x1--;}
-            else{
+            else{ //para un jugador
                 srand(time(0));
                 x1=rand() % 5+0;
             }
@@ -1104,3 +1110,15 @@ void delay()
 {
     for(int i = (time(NULL) + 2); time(NULL) != i; time(NULL));
 }
+
+/*
+Este fue un proyecto que nos llevo un mes entero y en ese mes tuvimos muchas
+discusiones, gritos, alegrias,etc. Por lo que estamos muy orgullosos de nuestro
+primer proyecto en la programacion, esperamos tener mas oportunidades asi para
+aprender de una forma autodidacta. Hecho por:
+
+-Juan Pablo Martinez
+-Hugo Edibray Becerra
+-Daniel Alberto Cota
+-Ruben Dominguez :)
+*/
