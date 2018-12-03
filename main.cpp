@@ -305,7 +305,7 @@ void desplegarMenu(void)
     cout<<("\n\t  $$$$/)$$$$$$$$$$$$$$$\n\t~~~$$$(/$$$$$$$$$$$$$$~~~\n\t~~~~$$$$$$$$$$$$$$$$$~~~~");
     cout<<("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~\n\t~~~~~~~~~~~~~~~~~~~~~~~~~");
     color(8);  //Otro color que cambiamos
-    cout<<("\n\n\t1- Un Jugador\n\n\t2- Multijugador\n\n\t3- Salir\n\n\tIntroduce una opción:");
+    cout<<("\n\n\t1- Un Jugador\n\n\t2- Multijugador\n\n\t3- Salir\n\n\tIntroduce una opcion:");
 }
 
 void imprimirPantalla()
