@@ -1,6 +1,6 @@
 #include <iostream> //Libreria que son de entrada y salida
 #include <iomanip> //Libreria que permite manipular la intefaz
-#include<cstdlib> //Nos permite gestionar la memoria dinamicamente y generar numeros
+#include <cstdlib> //Nos permite gestionar la memoria dinamicamente y generar numeros
                 //aleatorios(que es para lo que la usamos en este progama)
 #include <windows.h>////Es una libreria  que contiene las declaraciones de todas las funcionees
                     //de  la biblioteca Windows API.
@@ -111,7 +111,7 @@ void desplegarMenu(void)
     cout<<("\n\t  $$$$/)$$$$$$$$$$$$$$$\n\t~~~$$$(/$$$$$$$$$$$$$$~~~\n\t~~~~$$$$$$$$$$$$$$$$$~~~~");
     cout<<("\n\t~~~~~~~~~~~~~~~~~~~~~~~~~\n\t~~~~~~~~~~~~~~~~~~~~~~~~~");
     color(8);  //Otro color que cambiamos
-    cout<<("\n\n\t1- Un Jugador\n\n\t2- Multijugador\n\n\t3- Salir\n\n\tIntroduce una opción:");
+    cout<<("\n\n\t1- Un Jugador\n\n\t2- 1v1\n\n\t3- Salir\n\n\tIntroduce una opción:");
 }
 
 void imprimirPantalla()
@@ -365,7 +365,7 @@ void darcoordenadas1(int &orientacion, int &x, int &y)
 
 void Singleplayer(void)
 {
-    cout<<"Se selecciono el modo singleplayer"<<endl;
+    cout<<"Se selecciono el modo un jugador"<<endl;
     int boats_sunk1=8,boats_sunk2=8,x=0,y=0,lasthitcomx=0,lasthitcomy=0,lasthitcompturn=0;
     imprimirPantalla();
     ponerBarcos();
